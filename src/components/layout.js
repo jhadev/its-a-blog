@@ -1,5 +1,6 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
+import Header from './header';
 
 // lobotomized owl selector * + * = every sibling selection is going to get this style
 // avoid css reset normalizes vertical spacing
@@ -57,8 +58,16 @@ const Layout = ({ children }) => {
           }
         `}
       />
-      <header></header>
-      <main>{children}</main>
+      <Header />
+      <main
+        css={css`
+          margin: 2rem auto 4rem;
+          max-width: 90vw;
+          width: 550px;
+        `}
+      >
+        {children}
+      </main>
     </>
   );
 };
