@@ -1,7 +1,7 @@
 module.exports = {
   plugins: [
     'gatsby-plugin-emotion',
-    'gatsy-plugin-react-helmet',
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-mdx',
       options: {
