@@ -1,11 +1,15 @@
 import React from 'react';
 import { Global, css } from '@emotion/core';
+import Helmet from 'react-helmet';
 import Header from './header';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 // lobotomized owl selector * + * = every sibling selection is going to get this style
 // avoid css reset normalizes vertical spacing
 
 const Layout = ({ children }) => {
+  const { title, decscription } = useSiteMetadata();
+
   return (
     <>
       <Global
@@ -58,6 +62,11 @@ const Layout = ({ children }) => {
           }
         `}
       />
+      <Helmet>
+        <html lang="en" />
+        <title>{title}</title>
+        <meta name="description" content={decscription} />
+      </Helmet>
       <Header />
       <main
         css={css`
