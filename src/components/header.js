@@ -19,6 +19,10 @@ const NavLink = styled(Link)`
     font-weight: bold;
     color: #f5429e;
   }
+
+  &:last-of-type {
+    margin-right: 0px;
+  }
 `;
 const Header = () => {
   return (
@@ -28,7 +32,7 @@ const Header = () => {
         border-bottom: 1px solid #ddd;
         display: flex;
         justify-content: space-between;
-        padding: 0.5rem calc((100vw - 550px) / 2);
+        padding: 0.5rem calc((100vw - 550px - 0.5rem) / 2);
       `}
     >
       {/* site name */}
