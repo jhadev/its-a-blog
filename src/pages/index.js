@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import Layout from '../components/layout';
+import PostPreview from '../components/postPreview';
 import usePosts from '../hooks/usePosts';
 
 export default () => {
@@ -14,7 +15,7 @@ export default () => {
       <h2>Read these posts.</h2>
       {/* COMPONENT NOT MADE YET, RIP THIS OUT */}
       {posts.map(post => {
-        return <pre>{JSON.stringify(post, null, 2)}</pre>;
+        return <PostPreview key={post.slug} post={post} />;
       })}
     </Layout>
   );
