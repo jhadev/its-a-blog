@@ -3,6 +3,7 @@ import React from 'react';
 import Layout from '../components/layout';
 import PostPreview from '../components/postPreview';
 import Hero from '../components/hero';
+import Insta from '../components/insta';
 import usePosts from '../hooks/usePosts';
 
 export default () => {
@@ -17,6 +18,7 @@ export default () => {
         {posts.map(post => {
           return <PostPreview key={post.slug} post={post} />;
         })}
+        <Insta />
       </Layout>
     </>
   );
