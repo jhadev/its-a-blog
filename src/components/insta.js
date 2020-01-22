@@ -8,7 +8,7 @@ const Insta = () => {
   const { username } = instaData[0];
   return (
     <>
-      <h2>insta posts from @meme_coding</h2>
+      <h2>insta posts from @{username}</h2>
       <div
         css={css`
           display: flex;
