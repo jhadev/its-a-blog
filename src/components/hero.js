@@ -55,6 +55,8 @@ const Hero = () => {
       }
     }
   `);
+
+  // fadeIn blurs image on slow connections
   return (
     <ImageBackground Tag="section" fluid={image.sharp.fluid} fadeIn="soft">
       <TextBox>
