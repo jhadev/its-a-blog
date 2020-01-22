@@ -26,15 +26,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     reporter.panic('failed to create posts', queryResult.errors);
   }
 
-  const posts = result.data.allMdx.nodes
+  const posts = queryResult.data.allMdx.nodes;
 
   posts.forEach(post => {
     actions.createPage({
       path: post.frontmatter.slug,
-      component: /* */,
+      component: require.resolve('./src/templates/post.js'),
       context: {
-        slug: `/${post.frontmatter.slug}`
+        slug: post.frontmatter.slug
       }
-    })
-  })
+    });
+  });
 };
