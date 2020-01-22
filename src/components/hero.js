@@ -16,7 +16,7 @@ const ImageBackground = styled(BackgroundImage)`
 
 // hex with alpha channel 8 digit hex codes https://css-tricks.com/8-digit-hex-codes/
 const TextBox = styled('div')`
-  background-image: linear-gradient(to top, #ddbbffdd 2rem, #ddbbff00);
+  background-image: linear-gradient(to top, rgba(245, 66, 158, 0.3) 2rem, #ddbbff00);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -25,13 +25,15 @@ const TextBox = styled('div')`
   width: 100%;
 
   h1 {
-    text-shadow: 1px 1px 3px #eeddff66;
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(245, 66, 158, 0.4);
     font-size: 2.25rem;
   }
 
   p,
   a {
-    color: #222;
+    color: #242424;
+    font-weight: bold;
     margin-top 0;
   }
 
