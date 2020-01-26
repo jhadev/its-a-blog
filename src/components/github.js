@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'gatsby-image';
 import { css } from '@emotion/core';
+import { Wrapper, Outer, Inner, Front, Back } from './card';
 import useGithub from '../hooks/useGithub';
 
 const Github = () => {
@@ -19,37 +20,20 @@ const Github = () => {
       >
         {githubData.map(repo => {
           return (
-            <div
-              css={css`
-                background-color: #333;
-                padding: 10px;
-                border-radius: 10px;
-                color: #fff;
-                box-shadow: 0;
-                display: block;
-                margin: 0.5rem;
-                width: 265px;
-                transition: 200ms box-shadow linear;
-
-                :focus,
-                :hover {
-                  box-shadow: 0 2px 14px #22222255;
-                  z-index: 10;
-                }
-              `}
-              key={repo.id}
-            >
-              <div
-                css={css`
-                  width: %;
-                  font-size: 14px;
-                `}
-              >
-                <p>{repo.name}</p>
-                <p>{repo.url}</p>
-                <p>{repo.description}</p>
-              </div>
-            </div>
+            <Wrapper key={repo.id}>
+              <Outer>
+                <Inner>
+                  <Front>
+                    <h3>{repo.name}</h3>
+                  </Front>
+                  <Back>
+                    <p>{repo.name}</p>
+                    <p>{repo.url}</p>
+                    <p>{repo.description}</p>
+                  </Back>
+                </Inner>
+              </Outer>
+            </Wrapper>
           );
         })}
       </div>
