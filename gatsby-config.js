@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   plugins: [
     'gatsby-plugin-emotion',
@@ -46,7 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-source-github-api`,
       options: {
-        token: '39f1f74201efe7a98be1fdd6d1d8d33be743f7bc',
+        token: `${process.env.GITHUB_API_TOKEN}`,
         variables: {},
         graphQLQuery: `
         query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
@@ -90,7 +94,7 @@ module.exports = {
           }
         }`,
         variables: {
-          userFirst: 10,
+          userFirst: 40,
           searchFirst: 2,
           q: 'author:jhadev is:merged state:closed type:pr sort:comments',
           author: 'jhadev'
