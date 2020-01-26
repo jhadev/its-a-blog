@@ -19,8 +19,8 @@ export default () => {
         {posts.map(post => {
           return <PostPreview key={post.slug} post={post} />;
         })}
-        <Insta />
         <Github />
+        <Insta />
       </Layout>
     </>
   );
