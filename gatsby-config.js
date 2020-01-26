@@ -42,6 +42,60 @@ module.exports = {
         generateStatsFile: true,
         analyzerMode: 'static'
       }
+    },
+    {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        token: '39f1f74201efe7a98be1fdd6d1d8d33be743f7bc',
+        variables: {},
+        graphQLQuery: `
+        query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
+          user(login: $author) {
+            repositories(first: $userFirst, orderBy: {field: STARGAZERS, direction: DESC}) {
+              edges {
+                node {
+                  name
+                  description
+                  url
+                  stargazers {
+                    totalCount
+                  }
+                  readme: object(expression:"master:README.md"){
+                    ... on Blob{
+                      text
+                    }
+                  }
+                }
+              }
+            }
+          }
+          search(query: $q, type: ISSUE, first: $searchFirst) {
+            edges {
+              node {
+                ... on PullRequest {
+                  title
+                  merged
+                  url
+                  state
+                  repository {
+                    stargazers {
+                      totalCount
+                    }
+                    repoUrl: url
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }`,
+        variables: {
+          userFirst: 10,
+          searchFirst: 2,
+          q: 'author:jhadev is:merged state:closed type:pr sort:comments',
+          author: 'jhadev'
+        }
+      }
     }
   ],
   siteMetadata: {
