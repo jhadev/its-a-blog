@@ -50,7 +50,29 @@ module.exports = {
     {
       resolve: `gatsby-source-github-api`,
       options: {
-        token: `${process.env.GITHUB_API_TOKEN}`
+        token: `${process.env.GITHUB_API_TOKEN}`,
+        graphQLQuery: `
+        query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
+          user(login: $author) {
+            pinnedItems(first: $userFirst, types: [REPOSITORY]) {
+              edges {
+                node {
+                  ... on Repository {
+                    name,
+                    description,
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }`,
+        variables: {
+          userFirst: 6,
+          searchFirst: 2,
+          q: 'author:jhadev is:merged state:closed type:pr sort:comments',
+          author: 'jhadev'
+        }
       }
     }
   ],
