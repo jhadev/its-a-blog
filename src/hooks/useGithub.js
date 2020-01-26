@@ -21,6 +21,7 @@ const useGithub = () => {
   `);
 
   const nodes = dataNodes.githubData.data.user.pinnedItems.nodes.map(node => ({
+    id: node.id,
     name: node.name,
     description: node.description,
     url: node.url
