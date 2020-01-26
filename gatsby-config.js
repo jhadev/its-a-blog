@@ -52,16 +52,15 @@ module.exports = {
       options: {
         token: `${process.env.GITHUB_API_TOKEN}`,
         graphQLQuery: `
-        query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
+        query ($author: String = "", $userFirst: Int = 0) {
           user(login: $author) {
-            pinnedItems(first: $userFirst, types: [REPOSITORY]) {
-              edges {
-                node {
-                  ... on Repository {
-                    name,
-                    description,
-                    url
-                  }
+            pinnedItems(first: $userFirst) {
+              nodes {
+                ... on Repository {
+                  id
+                  name
+                  description
+                  url
                 }
               }
             }
@@ -69,8 +68,6 @@ module.exports = {
         }`,
         variables: {
           userFirst: 6,
-          searchFirst: 2,
-          q: 'author:jhadev is:merged state:closed type:pr sort:comments',
           author: 'jhadev'
         }
       }

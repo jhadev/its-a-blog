@@ -20,7 +20,7 @@ export default () => {
           return <PostPreview key={post.slug} post={post} />;
         })}
         <Insta />
-        {/* <Github /> */}
+        <Github />
       </Layout>
     </>
   );

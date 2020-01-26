@@ -1,41 +1,32 @@
-// import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
-// const useGithub = () => {
-//   const dataNodes = useStaticQuery(graphql`
-//     query {
-//       githubData {
-//         data {
-//           user {
-//             repositories {
-//               edges {
-//                 node {
-//                   name
-//                   description
-//                   url
-//                   stargazers {
-//                     totalCount
-//                   }
-//                   readme {
-//                     text
-//                   }
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
+const useGithub = () => {
+  const dataNodes = useStaticQuery(graphql`
+    query {
+      githubData {
+        data {
+          user {
+            pinnedItems {
+              nodes {
+                id
+                name
+                description
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
 
-//   const nodes = dataNodes.githubData.data.user.repositories.edges.map(edge => ({
-//     name: edge.node.name,
-//     description: edge.node.description,
-//     url: edge.node.url,
-//     stargazers: edge.node.stargazers.totalCount,
-//     readme: edge.node.readme.text
-//   }));
+  const nodes = dataNodes.githubData.data.user.pinnedItems.nodes.map(node => ({
+    name: node.name,
+    description: node.description,
+    url: node.url
+  }));
 
-//   return nodes;
-// };
+  return nodes;
+};
 
-// export default useGithub;
+export default useGithub;
