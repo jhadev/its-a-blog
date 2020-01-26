@@ -50,55 +50,7 @@ module.exports = {
     {
       resolve: `gatsby-source-github-api`,
       options: {
-        token: `${process.env.GITHUB_API_TOKEN}`,
-        variables: {},
-        graphQLQuery: `
-        query ($author: String = "", $userFirst: Int = 0, $searchFirst: Int = 0, $q: String = "") {
-          user(login: $author) {
-            repositories(first: $userFirst, orderBy: {field: STARGAZERS, direction: DESC}) {
-              edges {
-                node {
-                  name
-                  description
-                  url
-                  stargazers {
-                    totalCount
-                  }
-                  readme: object(expression:"master:README.md"){
-                    ... on Blob{
-                      text
-                    }
-                  }
-                }
-              }
-            }
-          }
-          search(query: $q, type: ISSUE, first: $searchFirst) {
-            edges {
-              node {
-                ... on PullRequest {
-                  title
-                  merged
-                  url
-                  state
-                  repository {
-                    stargazers {
-                      totalCount
-                    }
-                    repoUrl: url
-                    name
-                  }
-                }
-              }
-            }
-          }
-        }`,
-        variables: {
-          userFirst: 40,
-          searchFirst: 2,
-          q: 'author:jhadev is:merged state:closed type:pr sort:comments',
-          author: 'jhadev'
-        }
+        token: `${process.env.GITHUB_API_TOKEN}`
       }
     }
   ],
