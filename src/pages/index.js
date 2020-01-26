@@ -5,6 +5,7 @@ import PostPreview from '../components/postPreview';
 import Hero from '../components/hero';
 import Insta from '../components/insta';
 import usePosts from '../hooks/usePosts';
+import Github from '../components/github';
 
 export default () => {
   const posts = usePosts();
@@ -18,6 +19,7 @@ export default () => {
         {posts.map(post => {
           return <PostPreview key={post.slug} post={post} />;
         })}
+        <Github />
         <Insta />
       </Layout>
     </>

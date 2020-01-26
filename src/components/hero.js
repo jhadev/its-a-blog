@@ -8,10 +8,7 @@ const ImageBackground = styled(BackgroundImage)`
   background-position: top 20% center;
   background-size: cover;
   height: 50vh;
-
-  + * {
-    margin-top: 0px;
-  }
+  margin: -1rem 0 !important;
 `;
 
 // hex with alpha channel 8 digit hex codes https://css-tricks.com/8-digit-hex-codes/

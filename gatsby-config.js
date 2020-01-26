@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`
+});
+
 module.exports = {
   plugins: [
     'gatsby-plugin-emotion',
@@ -41,6 +45,31 @@ module.exports = {
         disable: !process.env.ANALYZE_BUNDLE_SIZE,
         generateStatsFile: true,
         analyzerMode: 'static'
+      }
+    },
+    {
+      resolve: `gatsby-source-github-api`,
+      options: {
+        token: `${process.env.GITHUB_API_TOKEN}`,
+        graphQLQuery: `
+        query ($author: String = "", $userFirst: Int = 0) {
+          user(login: $author) {
+            pinnedItems(first: $userFirst) {
+              nodes {
+                ... on Repository {
+                  id
+                  name
+                  description
+                  url
+                }
+              }
+            }
+          }
+        }`,
+        variables: {
+          userFirst: 6,
+          author: 'jhadev'
+        }
       }
     }
   ],
