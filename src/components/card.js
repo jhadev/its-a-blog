@@ -9,6 +9,7 @@ const Wrapper = styled('div')`
   box-shadow: 0;
   display: block;
   margin: 0.5rem;
+  max-height: 265px;
   width: 265px;
   transition: 200ms box-shadow linear;
   background-color: #000;
@@ -40,6 +41,7 @@ const Inner = styled('div')`
 const Front = styled('div')`
   backface-visibility: hidden !important;
   background-color: #000;
+  color: #fff;
   border-radius: 6px;
   height: 100%;
   position: absolute;

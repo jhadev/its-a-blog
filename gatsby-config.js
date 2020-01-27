@@ -61,6 +61,7 @@ module.exports = {
                   name
                   description
                   url
+                  homepageUrl
                 }
               }
             }

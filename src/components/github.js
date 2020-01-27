@@ -25,11 +25,11 @@ const Github = () => {
                 <Inner>
                   <Front>
                     <h3>{repo.name}</h3>
+                    <p>{repo.description}</p>
                   </Front>
                   <Back>
-                    <p>{repo.name}</p>
                     <p>{repo.url}</p>
-                    <p>{repo.description}</p>
+                    <p>{repo.homepageUrl}</p>
                   </Back>
                 </Inner>
               </Outer>

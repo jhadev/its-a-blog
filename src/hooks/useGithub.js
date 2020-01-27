@@ -12,6 +12,7 @@ const useGithub = () => {
                 name
                 description
                 url
+                homepageUrl
               }
             }
           }
@@ -24,7 +25,8 @@ const useGithub = () => {
     id: node.id,
     name: node.name,
     description: node.description,
-    url: node.url
+    url: node.url,
+    homepageUrl: node.homepageUrl
   }));
 
   return nodes;
